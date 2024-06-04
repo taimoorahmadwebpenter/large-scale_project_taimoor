@@ -57,14 +57,31 @@
                             if ($conn->connect_error) {
                                 die("Connection failed: " . $conn->connect_error);
                             }
-                            $reservation_id = $_GET['reservation-id'];
-                            $sql = "SELECT tbl_reservations.id, status, title, subtotal, adults, childs ,pets , check_in , check_out,
-                            date,tbl_cities.name,tbl_provinces.name AS prvce, tbl_countries.name AS ctry
-                            FROM tbl_reservations 
-                            INNER JOIN tbl_properties ON tbl_properties.id = tbl_reservations.id
-                            INNER JOIN tbl_cities ON tbl_cities.id = tbl_reservations.id
-                            INNER JOIN tbl_provinces ON tbl_provinces.id = tbl_reservations.id
-                            INNER JOIN tbl_countries ON tbl_countries.id = tbl_reservations.id WHERE tbl_reservations.id = $reservation_id ";
+                           $reservation_id = $_GET['reservation-id'];
+                            $sql = "SELECT 
+                            m.id, 
+                               status, 
+                               title, 
+                               subtotal, 
+                               adults, 
+                               childs, 
+                               pets, 
+                               check_in, 
+                               check_out,
+                               date,
+                               tbl_cities.name AS city,
+                               tbl_provinces.name AS province,
+                               tbl_countries.name AS country,
+                               (SELECT fname FROM tbl_users WHERE id = m.owner_id) AS sender_name,
+                               (SELECT fname FROM tbl_users WHERE id = m.renter_id) AS receiver_name
+                           FROM tbl_reservations m
+                           INNER JOIN tbl_properties ON tbl_properties.id = m.id
+                           INNER JOIN tbl_cities ON tbl_cities.id = tbl_properties.id
+                           INNER JOIN tbl_provinces ON tbl_provinces.id = tbl_properties.id
+                           INNER JOIN tbl_countries ON tbl_countries.id = tbl_properties.id
+                            WHERE m.id='$reservation_id'
+                           
+                    ";
 
 $result = $conn->query($sql);
 
@@ -124,7 +141,7 @@ if ($result) {
                                                     <img src="img/guest-avatar-100x100.png" alt="Thumb" width="64" height="64" class="reserve-detail-avatar img-circle">
                                                     <ul class="detail-list">
                                                         <li><strong>From:</strong> <?php //echo $row['title']; ?></li>
-                                                        <li>Apartment for Rent</li>
+                                                        <li><?php echo $row['sender_name']; ?></li>
                                                     </ul>
                                                 </div><!-- block-right -->
                                             </div><!-- block-body -->
@@ -138,7 +155,7 @@ if ($result) {
                                                 <div class="block-right">
                                                     <img src="img/host-avatar-100x100.png" alt="Thumb" width="64" height="64" class="reserve-detail-avatar img-circle">
                                                     <ul class="detail-list">
-                                                        <li><strong>Name:</strong> <a href="#">Patricia Whatson</a></li>
+                                                        <li><strong>Name:</strong> <a href="#"><?php echo $row['receiver_name']; ?></a></li>
                                                         <li><strong>Email:</strong> <a href="#">email@email.com</a></li>
                                                         <li><strong>Phone:</strong> <a href="#">+1 987 7654 321</a></li>
                                                     </ul>

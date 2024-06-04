@@ -18,7 +18,7 @@
                             <?php include ('inc/header/main-nav.php'); ?>
                         </div>
                         <div class="header-comp-right">
-                            <?php include ('inc/header/account-user.php'); ?>
+                            <?php include ('inc/header/account-host.php'); ?>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
             <h1>Reservations</h1>
         </div><!-- .dashboard-page-title -->
 
-        <?php include 'inc/dashboard/dashboard-side-menu-user.php';?>
+        <?php include 'inc/dashboard/dashboard-side-menu-host.php';?>
 
         <div class="user-dashboard-right dashboard-without-sidebar">
             <div class="dashboard-content-area">
@@ -44,13 +44,6 @@
                                 <div class="block">
                                     <div class="block-title">
                                         <h2 class="title">Manage</h2>
-                                        <div class="mt-10">
-                                            <a class="btn btn-primary btn-slim" href="#">New (30)</a>
-                                            <a class="btn btn-primary btn-slim" href="#">Available (5)</a>
-                                            <a class="btn btn-primary btn-slim" href="#">Booked (25)</a>
-                                            <a class="btn btn-primary btn-slim" href="#">Declined (25)</a>
-                                            <a class="btn btn-primary btn-slim" href="#">Cancelled (25)</a>
-                                        </div>
                                     </div>
                                     <div class="table-block dashboard-reservation-table dashboard-table">
                                         <table class="table table-hover">
@@ -60,23 +53,20 @@
                                                     <th>ID</th>
                                                     <th>Status</th>
                                                     <th>Date</th>
-                                                    <th>Address</th>
+                                                    <th>Title</th>
                                                     <th>Check-in</th>
-                                                    <th>Check-out</th>
-                                                    <th>Adults</th>
-                                                    <th>Childs</th>
-                                                    <th>Pets</th>
+                                                    <th>Guests</th>
                                                     <th>Subtotal</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php include 'inc/dashboard/dashboard-reservation-user.php';?>
+                                                <?php include 'inc/dashboard/dashboard-reservation-experiences-host.php';?>
                                             </tbody>
                                         </table>
                                     </div>
-                                </div><!-- .block -->   
-                                <?php include 'inc/listing/pagination.php';?> 
+                                </div><!-- .block -->    
+                                <?php include 'inc/listing/pagination.php';?>
                             </div><!-- .dashboard-area -->
                         </div><!-- col-lg-12 col-md-12 col-sm-12 -->
                     </div>

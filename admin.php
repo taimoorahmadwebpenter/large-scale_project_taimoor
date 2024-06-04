@@ -45,20 +45,31 @@
                                 <div class="block">
                                     <div class="block-verify">
                                     <?php
-                                    $sql = "SELECT 
-                                    (SELECT COUNT(*) FROM tbl_users) AS user_count, 
-                                    (SELECT COUNT(*) FROM tbl_properties) AS property_count";
-                        $result = $conn->query($sql);
+// Assuming you have a connection object named $conn
 
-                        if ($result->num_rows > 0) {
-                            $row = $result->fetch_assoc();
-                            $user_count = $row["user_count"];
-                            $property_count = $row["property_count"];
-                        } else {
-                            $user_count = 0;
-                            $property_count = 0;
-                        }
-                                    ?>
+$sql = "
+    SELECT 
+        (SELECT COUNT(*) FROM tbl_users) AS user_count,
+        (SELECT COUNT(*) FROM tbl_properties) AS property_count,
+        (SELECT COUNT(*) FROM tbl_reservations) AS reservation_count
+";
+
+$result = mysqli_query($conn, $sql); // Execute the query
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $user_count = $row["user_count"];
+    $property_count = $row["property_count"];
+    $reservation_count = $row["reservation_count"];
+} else {
+    $user_count = 0;
+    $property_count = 0;
+    $reservation_count = 0;
+}
+
+// Close the database connection if needed
+
+?>
                                         <div class="block-col block-col-25 text-left">
                                             <h3>Listings</h3>
                                             <p class="block-big-text"><?php echo $property_count; ?></p>
@@ -67,7 +78,7 @@
                                         </div>
                                         <div class="block-col block-col-25">
                                             <h3>Reservations</h3>
-                                            <p class="block-big-text">65</p>
+                                            <p class="block-big-text"><?php echo $reservation_count; ?></p>
                                             <div>21 New reservations</div>
                                             <a class="btn btn-success-outlined btn-slim admin-top-banner-btn" href="#">Manage</a>
                                         </div>
@@ -112,7 +123,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php include 'inc/dashboard/dashboard-admin-listing-item-pending.php';?>
+                                                <?php include 'inc/dashboard/dashboard-admin-listing-item-published.php';?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -131,7 +142,7 @@
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th></th>
+                                                    <th>Thumbnail</th>
                                                     <th>ID</th>
                                                     <th>Status</th>
                                                     <th>Date</th>
@@ -177,7 +188,7 @@
                                             </thead>
                                             <tbody>
                                                 <?php include 'inc/dashboard/dashboard-admin-host-user.php';?>
-                                                <?php include 'inc/dashboard/dashboard-admin-guest-user.php';?>
+                        
                                             </tbody>
                                         </table>
                                     </div>

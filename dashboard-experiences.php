@@ -4,7 +4,7 @@
     <?php include 'inc/head.php';?>
 </head>
 <body>
-    
+
     <div class="header-dashboard">
         <div class="nav-area header-type-1">
             <!-- desktop nav -->
@@ -18,7 +18,7 @@
                             <?php include ('inc/header/main-nav.php'); ?>
                         </div>
                         <div class="header-comp-right">
-                            <?php include ('inc/header/account-user.php'); ?>
+                            <?php include ('inc/header/account-host.php'); ?>
                         </div>
                     </div>
                 </div>
@@ -26,14 +26,14 @@
             <!-- mobile header -->
             <?php include ('inc/header/header-mobile-full-width.php'); ?>
         </div>   
-    </div>
+    </div>    
     <section id="body-area">
 
         <div class="dashboard-page-title">
-            <h1>Reservations</h1>
+            <h1>Experiences</h1>
         </div><!-- .dashboard-page-title -->
 
-        <?php include 'inc/dashboard/dashboard-side-menu-user.php';?>
+        <?php include 'inc/dashboard/dashboard-side-menu-host.php';?>
 
         <div class="user-dashboard-right dashboard-without-sidebar">
             <div class="dashboard-content-area">
@@ -43,46 +43,47 @@
                             <div class="dashboard-area">
                                 <div class="block">
                                     <div class="block-title">
-                                        <h2 class="title">Manage</h2>
-                                        <div class="mt-10">
-                                            <a class="btn btn-primary btn-slim" href="#">New (30)</a>
-                                            <a class="btn btn-primary btn-slim" href="#">Available (5)</a>
-                                            <a class="btn btn-primary btn-slim" href="#">Booked (25)</a>
-                                            <a class="btn btn-primary btn-slim" href="#">Declined (25)</a>
-                                            <a class="btn btn-primary btn-slim" href="#">Cancelled (25)</a>
+                                        <div class="block-left">
+                                            <h2 class="title">Manage</h2>
+                                        </div>
+                                        <div class="block-right">
+                                            <div class="dashboard-form-inline">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Search">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary btn-search-icon"><i class="homey-icon homey-icon-search-1" aria-hidden="true"></i></button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="table-block dashboard-reservation-table dashboard-table">
+                                    <div class="table-block dashboard-listing-table dashboard-table">
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th></th>
+                                                    <th>Thumbnail</th>
+                                                    <th>Title</th>
                                                     <th>ID</th>
+                                                    <th>Price</th>
+                                                    <th>Guests</th>
                                                     <th>Status</th>
-                                                    <th>Date</th>
-                                                    <th>Address</th>
-                                                    <th>Check-in</th>
-                                                    <th>Check-out</th>
-                                                    <th>Adults</th>
-                                                    <th>Childs</th>
-                                                    <th>Pets</th>
-                                                    <th>Subtotal</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php include 'inc/dashboard/dashboard-reservation-user.php';?>
+                                                <?php include 'inc/dashboard/dashboard-experience-item.php';?>
                                             </tbody>
                                         </table>
                                     </div>
-                                </div><!-- .block -->   
-                                <?php include 'inc/listing/pagination.php';?> 
+                                </div><!-- .block -->
+                                <?php include 'inc/listing/loadmore.php';?>
                             </div><!-- .dashboard-area -->
                         </div><!-- col-lg-12 col-md-12 col-sm-12 -->
                     </div>
                 </div><!-- .container-fluid -->
-            </div><!-- .dashboard-content-area -->    
+            </div><!-- .dashboard-content-area --> 
         </div><!-- .user-dashboard-right -->
+
     </section><!-- #body-area -->
 
     <?php // include 'inc/dashboard/dashboard-footer.php';?>

@@ -18,19 +18,19 @@
                             <?php include ('inc/header/main-nav.php'); ?>
                         </div>
                         <div class="header-comp-right">
-                            <?php include ('inc/header/account-host.php'); ?>
+                            <?php include ('inc/header/login-register-v1.php'); ?>
                         </div>
                     </div>
                 </div>
             </header>
             <!-- mobile header -->
-            <?php include ('inc/header/header-mobile-full-width.php'); ?>
+            <?php include ('inc/header/header-mobile-full-width.php'); ?>    
         </div>   
-    </div>    
+    </div>
     <section id="body-area">
 
         <div class="dashboard-page-title">
-            <h1>Listings</h1>
+            <h1>Favorites</h1>
         </div><!-- .dashboard-page-title -->
 
         <?php include 'inc/dashboard/dashboard-side-menu-host.php';?>
@@ -45,20 +45,6 @@
                                     <div class="block-title">
                                         <div class="block-left">
                                             <h2 class="title">Manage</h2>
-                                            <div class="mt-10">
-                                                <a class="btn btn-primary btn-slim" href="#">Published (30)</a>
-                                                <a class="btn btn-primary btn-slim" href="#">Pending (5)</a>
-                                            </div>
-                                        </div>
-                                        <div class="block-right">
-                                            <div class="dashboard-form-inline">
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Search">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary btn-search-icon"><i class="homey-icon homey-icon-search-1" aria-hidden="true"></i></button>
-                                                </form>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="table-block dashboard-listing-table dashboard-table">
@@ -67,34 +53,34 @@
                                                 <tr>
                                                     <th>Thumbnail</th>
                                                     <th>Address</th>
-                                                    <th>ID</th>
                                                     <th>Type</th>
                                                     <th>Price</th>
                                                     <th>Bedrooms</th>
                                                     <th>Baths</th>
                                                     <th>Guests</th>
-                                                    <th>Status</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php include 'inc/dashboard/dashboard-listing-item.php';?>
+                                                <?php include 'inc/dashboard/dashboard-item-favorites.php';?>
+                                                <?php include 'inc/dashboard/dashboard-item-favorites.php';?>
+                                                <?php include 'inc/dashboard/dashboard-item-favorites.php';?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div><!-- .block -->
                                 <?php include 'inc/listing/loadmore.php';?>
-                            </div><!-- .dashboard-area -->
-                        </div><!-- col-lg-12 col-md-12 col-sm-12 -->
-                    </div>
-                </div><!-- .container-fluid -->
-            </div><!-- .dashboard-content-area --> 
-        </div><!-- .user-dashboard-right -->
+                            </div><!-- .block -->
+                        </div><!-- .dashboard-area -->
+                    </div><!-- col-lg-12 col-md-12 col-sm-12 -->
+                </div>
+            </div><!-- .container-fluid -->
+        </div><!-- .dashboard-content-area -->    
+    </div><!-- .user-dashboard-right -->
+</section><!-- #body-area -->
 
-    </section><!-- #body-area -->
-
-    <?php // include 'inc/dashboard/dashboard-footer.php';?>
-    <?php include 'inc/scripts.php';?>
+<?php // include 'inc/dashboard/dashboard-footer.php';?>
+<?php include 'inc/scripts.php';?>
 
 </body>
 </html>

@@ -76,7 +76,7 @@
                                     </table>
                                 </div>
                             </div><!-- .block -->
-                           
+                             <?php include 'inc/listing/pagination.php';?> 
                         </div><!-- .dashboard-area -->
                     </div><!-- col-lg-12 col-md-12 col-sm-12 -->
                 </div>
